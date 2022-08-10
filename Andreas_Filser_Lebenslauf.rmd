@@ -27,12 +27,12 @@ knitr::opts_chunk$set(
 )
 
 
+github_version = T
 # Read in all data and initialize a CV printer object
 CV <- create_CV_object(
   data_location = here::here(),  
   pdf_mode = params$pdf_mode, short = T
 )
-
 ```
 
 

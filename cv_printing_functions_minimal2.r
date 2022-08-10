@@ -297,6 +297,8 @@ Links {data-icon=link}
 
 #' @description Contact information section with icons
 print_contact_info <- function(cv){
+  
+  if(github_version == T) cv$contact_info <- cv$contact_info %>% filter(!grepl("born|tel|address",loc))
   glue::glue_data(
     cv$contact_info,
     "- <i class='fa fa-{icon}'></i> {contact}"
