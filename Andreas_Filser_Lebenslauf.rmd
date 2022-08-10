@@ -89,7 +89,7 @@ Disclaimer {#disclaimer}
 
 Erstellt mit [**pagedown**](https://github.com/rstudio/pagedown).
 
-Der Code für diesen Lebenslauf ist einsehbar auf [github.com/filius0815/](https://github.com/filius0815/).
+Der Code für diesen Lebenslauf ist einsehbar auf [github.com/filius0815/CV](https://github.com/filius23/CV).
 
 Stand: `r format(Sys.Date(), '%d.%m.%Y')`.
 
