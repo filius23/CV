@@ -10,7 +10,7 @@ output:
     css: ['minimal_dd_cv2.css', 'resume']
     self_contained: true
 # uncomment this line to produce HTML and PDF in RStudio:
-knit: pagedown::chrome_print
+# knit: pagedown::chrome_print
 # Minimalistic CV: no color, no icons
 ---
 
