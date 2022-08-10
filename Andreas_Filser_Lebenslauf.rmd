@@ -87,7 +87,7 @@ CV %>% print_lang_bars()
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
-Erstellt mit [**pagedown**](https://github.com/rstudio/pagedown).
+Erstellt mit R und [pagedown](https://github.com/rstudio/pagedown).
 
 Der Code für diesen Lebenslauf ist einsehbar auf [github.com/filius0815/CV](https://github.com/filius23/CV).
 
