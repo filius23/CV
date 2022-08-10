@@ -1,0 +1,171 @@
+---
+title: "CV Andreas Filser"
+author: Andreas Filser
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+output:
+  pagedown::html_resume:
+    css: ['minimal_dd_cv2.css', 'resume']
+    self_contained: true
+# uncomment this line to produce HTML and PDF in RStudio:
+knit: pagedown::chrome_print
+# Minimalistic CV: no color, no icons
+---
+
+```{r, include=FALSE}
+if(Sys.getenv("USERNAME") == "filse" ) .libPaths("D:/R-library4") 
+library(tidyverse)
+library(magrittr)
+library(lubridate)
+library(here)
+source("cv_printing_functions_minimal2.r")
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+
+# Read in all data and initialize a CV printer object
+CV <- create_CV_object(
+  data_location = here::here(),  
+  pdf_mode = params$pdf_mode, short = T
+)
+
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+```{r}
+# Build interactive network of positions colored by section
+# and connected if they occurred in the same year
+# datadrivencv::build_network_logo(CV$entries_data)
+# knitr::include_graphics("avatar-quad.jpg")
+```
+<br>
+
+Persönliches {#contact}
+--------------------------------------------------------------------------------
+
+<!-- - Geboren: 23.08.1987 -->
+```{r}
+CV %>% print_contact_info()
+```
+
+
+
+Programmkenntnisse {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_skill_bars()
+```
+
+Sprachkenntnisse {#lang}
+--------------------------------------------------------------------------------
+```{r}
+CV %>% print_lang_bars()
+```
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Erstellt mit [**pagedown**](https://github.com/rstudio/pagedown).
+
+Der Code für diesen Lebenslauf ist einsehbar auf [github.com/filius0815/](https://github.com/filius0815/).
+
+Stand: `r format(Sys.Date(), '%d.%m.%Y')`.
+
+
+
+Main
+================================================================================
+
+Dr. Andreas Filser {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+# CV %<>% print_text_block("intro") 
+```
+
+Universitärer Werdegang {data-icon=none} 
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('education')
+```
+
+Berufliche Erfahrung {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('research_positions')
+```
+
+
+Publikationen {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_paper('papers')
+```
+
+<br>
+
+Aktuelle Projekte {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_paper('working_paper')
+```
+
+Lehrerfahrung {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('teaching_positions')
+```
+
+Kursteilnahmen und Weiterbildung {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('kurs')
+```
+
+<br>
+
+Konferenzbeiträge (Auswahl) {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_paper('konferenz')
+```
+
+Stipendien und Förderungen {data-icon=none}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('stipendium')
+```
+
+
+
